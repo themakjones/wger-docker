@@ -121,6 +121,7 @@ services:
       timeout: 5s
       retries: 5
       start_period: 30s
+    restart: unless-stopped
 
   celery_beat:
     image: docker.io/wger/server:latest
@@ -137,6 +138,7 @@ services:
     depends_on:
       celery_worker:
         condition: service_healthy
+    restart: unless-stopped
 
 volumes:
   postgres-data:
